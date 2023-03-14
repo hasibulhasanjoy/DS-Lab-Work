@@ -37,18 +37,15 @@ void insertAtFirst(int data)
 
 void insetAtIndex(int index, int data)
 {
-    // int i = 0;
     Node *ptr = new Node;
     ptr->data = data;
     Node *p = head;
-    Node *q = head->next;
     for (int i = 0; i < index; i++)
     {
         p = p->next;
-        q = q->next;
     }
+    ptr->next = p->next;
     p->next = ptr;
-    ptr->next = q;
 }
 void printLinkedList()
 {
