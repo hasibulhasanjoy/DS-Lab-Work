@@ -27,6 +27,29 @@ void createLinkedList()
     fifth->next = NULL;
 }
 
+void insertAtFirst(int data)
+{
+    Node *insert = new Node;
+    insert->data = data;
+    insert->next = head;
+    head = insert;
+}
+
+void insetAtIndex(int index, int data)
+{
+    // int i = 0;
+    Node *ptr = new Node;
+    ptr->data = data;
+    Node *p = head;
+    Node *q = head->next;
+    for (int i = 0; i < index; i++)
+    {
+        p = p->next;
+        q = q->next;
+    }
+    p->next = ptr;
+    ptr->next = q;
+}
 void printLinkedList()
 {
     Node *ptr = head;
@@ -37,10 +60,15 @@ void printLinkedList()
         ptr = ptr->next;
         i++;
     }
+    cout << "***End of List***" << endl;
 }
 int main()
 {
     createLinkedList();
+    printLinkedList();
+    insertAtFirst(6);
+    printLinkedList();
+    insetAtIndex(2, 54);
     printLinkedList();
     return 0;
 }
