@@ -13,6 +13,28 @@ Node *second = new Node;
 Node *third = new Node;
 Node *fourth = new Node;
 Node *fifth = new Node;
+void createLinkedList();
+void insertAtFirst(int data);
+void insetAtIndex(int index, int data);
+void insertAfterAIndex(Node *previous, int data);
+void insertAtLast(int data);
+void printLinkedList();
+
+int main()
+{
+    createLinkedList();
+    printLinkedList();
+    insertAtFirst(6);
+    printLinkedList();
+    insetAtIndex(2, 54);
+    printLinkedList();
+    insertAfterAIndex(second, 45);
+    printLinkedList();
+    insertAtLast(90);
+    printLinkedList();
+    return 0;
+}
+
 void createLinkedList()
 {
     head->data = 7;
@@ -25,6 +47,19 @@ void createLinkedList()
     fourth->next = fifth;
     fifth->data = 11;
     fifth->next = NULL;
+}
+
+void printLinkedList()
+{
+    Node *ptr = head;
+    int i = 0;
+    while (ptr != NULL)
+    {
+        cout << "Element At " << i << " : " << ptr->data << endl;
+        ptr = ptr->next;
+        i++;
+    }
+    cout << "***End of List***" << endl;
 }
 
 void insertAtFirst(int data)
@@ -47,25 +82,24 @@ void insetAtIndex(int index, int data)
     ptr->next = p->next;
     p->next = ptr;
 }
-void printLinkedList()
+
+void insertAfterAIndex(Node *previous, int data)
 {
-    Node *ptr = head;
-    int i = 0;
-    while (ptr != NULL)
-    {
-        cout << "Element At " << i << " : " << ptr->data << endl;
-        ptr = ptr->next;
-        i++;
-    }
-    cout << "***End of List***" << endl;
+    Node *ptr = new Node;
+    ptr->data = data;
+    ptr->next = previous->next;
+    previous->next = ptr;
 }
-int main()
+
+void insertAtLast(int data)
 {
-    createLinkedList();
-    printLinkedList();
-    insertAtFirst(6);
-    printLinkedList();
-    insetAtIndex(2, 54);
-    printLinkedList();
-    return 0;
+    Node *ptr = new Node;
+    ptr->data = data;
+    Node *q = head;
+    while (q->next != NULL)
+    {
+        q = q->next;
+    }
+    q->next = ptr;
+    ptr->next = NULL;
 }
