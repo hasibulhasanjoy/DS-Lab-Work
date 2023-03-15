@@ -17,14 +17,17 @@ Node *fifth = new Node;
 void createLinkedList();
 void printLinkedList();
 void deleteFromFirst();
-void deleteFromAnIndex(int index);
+void deleteIndex(int index);
+void deleteLast();
 int main()
 {
     createLinkedList();
     printLinkedList();
     // deleteFromFirst();
     // printLinkedList();
-    deleteFromAnIndex(2);
+    deleteIndex(2);
+    printLinkedList();
+    deleteLast();
     printLinkedList();
     return 0;
 }
@@ -62,7 +65,7 @@ void deleteFromFirst()
     free(ptr);
 }
 
-void deleteFromAnIndex(int index)
+void deleteIndex(int index)
 {
     Node *p = head;
     Node *q = head->next;
@@ -72,5 +75,18 @@ void deleteFromAnIndex(int index)
         q = q->next;
     }
     p->next = q->next;
+    free(q);
+}
+
+void deleteLast()
+{
+    Node *p = head;
+    Node *q = head->next;
+    while (q->next != NULL)
+    {
+        p = p->next;
+        q = q->next;
+    }
+    p->next = NULL;
     free(q);
 }
