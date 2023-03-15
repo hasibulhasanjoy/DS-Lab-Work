@@ -23,8 +23,8 @@ int main()
 {
     createLinkedList();
     printLinkedList();
-    // deleteFromFirst();
-    // printLinkedList();
+    deleteFromFirst();
+    printLinkedList();
     deleteIndex(2);
     printLinkedList();
     deleteLast();
